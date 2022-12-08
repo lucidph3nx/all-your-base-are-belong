@@ -2,11 +2,7 @@ FROM cimg/base:current-20.04
 
 ARG TZ="Etc/UTC"
 
-
-# Install yq
-RUN curl --silent --location --output /usr/bin/yq "https://github.com/mikefarah/yq/releases/download/v4.28.1/yq_linux_amd64" \
-&& chmod +x /usr/bin/yq \
-    && yq --version
+USER root
 
 #install Terraform & Terragrunt using tfenv & tgenv
 ENV PATH="/usr/local/lib/.tfenv/bin:/usr/local/lib/.tgenv/bin:${PATH}"
@@ -41,5 +37,7 @@ RUN curl -sL https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv
         /usr/local/aws-cli/v2/*/dist/aws_completer \
         /usr/local/aws-cli/v2/*/dist/awscli/data/ac.index \
         /usr/local/aws-cli/v2/*/dist/awscli/examples
+
+USER circleci
 
 WORKDIR /apps
