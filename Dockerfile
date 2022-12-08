@@ -5,7 +5,7 @@ ARG TZ="Etc/UTC"
 
 # Install yq
 RUN curl --silent --location --output /usr/bin/yq "https://github.com/mikefarah/yq/releases/download/v4.28.1/yq_linux_amd64" \
-    && chmod +x /usr/bin/yq \
+&& chmod +x /usr/bin/yq \
     && yq --version
 
 #install Terraform & Terragrunt using tfenv & tgenv
