@@ -1,15 +1,10 @@
 FROM cimg/base:current-20.04
 
-ARG YQ_VERSION=4.28.1
-ARG DATADOG_CI_VERSION=1.17.0
-ARG DOCKER_COMPOSE_VERSION=1.29.2
-ARG HELM_VERSION=3.10.0
-ARG KUBECTL_VERSION=1.21.9
 ARG TZ="Etc/UTC"
 
 
 # Install yq
-RUN curl --silent --location --output /usr/bin/yq "https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_linux_amd64" \
+RUN curl --silent --location --output /usr/bin/yq https://github.com/mikefarah/yq/releases/download/v4.28.1/yq_linux_amd64 \
     && chmod +x /usr/bin/yq \
     && yq --version
 
